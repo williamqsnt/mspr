@@ -5,6 +5,7 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "prisma": "^5.17.0"
   },
   "name": "express-backend",
@@ -15,7 +16,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config ./jest.config.js",
     "start": "node app.js"
   },
   "author": "",
