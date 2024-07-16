@@ -1,0 +1,28 @@
+name: Jest tests
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout de repository
+        uses: actions/checkout@v2
+
+      - name: Nettoyer le cache
+        run: npm cache clean --force
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Installer les dependances
+        run: npm install && npm update
+
+      - name: Lancement des tests Jest
+        run: npm test
