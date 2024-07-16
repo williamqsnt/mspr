@@ -1,0 +1,97 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
+}
+
+model Utilisateur {
+    idUtilisateur  Int            @id @default(autoincrement())
+    nom            String         @db.VarChar(50)
+    prenom         String         @db.VarChar(50)
+    dateNaissance  DateTime       @db.Date
+    numero         String         @unique @db.VarChar(50)
+    email          String         @unique @db.VarChar(50)
+    adresse        String         @db.VarChar(50)
+    pseudo         String         @unique @db.VarChar(50)
+    motDePasse     String         @db.VarChar(50)
+    plantes        Plante[]
+    conseils       Conseil[]
+    gardiennages   Gardiennage[]
+    conversations  Conversation[] @relation("ConversationMembre1")
+    conversations2 Conversation[] @relation("ConversationMembre2")
+    messages       Message[]
+    roles          AvoirRole[]
+}
+
+model Plante {
+    idPlante      Int           @id @default(autoincrement())
+    espece        String        @db.VarChar(50)
+    description   String
+    nom           String        @db.VarChar(50)
+    adresse       String        @db.VarChar(50)
+    idUtilisateur Int
+    utilisateur   Utilisateur   @relation(fields: [idUtilisateur], references: [idUtilisateur])
+    conseils      Conseil[]
+    gardiennages  Gardiennage[]
+}
+
+model Role {
+    idRole       Int         @id @default(autoincrement())
+    libelle      String      @db.VarChar(50)
+    utilisateurs AvoirRole[]
+}
+
+model Conseil {
+    idConseil     Int         @id @default(autoincrement())
+    description   String
+    idPlante      Int
+    idUtilisateur Int
+    plante        Plante      @relation(fields: [idPlante], references: [idPlante])
+    utilisateur   Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
+}
+
+model Gardiennage {
+    idGardiennage Int           @id @unique @default(autoincrement())
+    dateDebut     DateTime      @db.Date
+    dateFin       DateTime      @db.Date
+    idUtilisateur Int?
+    idPlante      Int
+    utilisateur   Utilisateur?  @relation(fields: [idUtilisateur], references: [idUtilisateur])
+    plante        Plante        @relation(fields: [idPlante], references: [idPlante])
+    conversation  Conversation?
+}
+
+model Conversation {
+    idConversation  Int         @id @default(autoincrement())
+    idUtilisateur   Int
+    idUtilisateur_1 Int
+    idGardiennage   Int         @unique
+    membre1         Utilisateur @relation("ConversationMembre1", fields: [idUtilisateur], references: [idUtilisateur])
+    membre2         Utilisateur @relation("ConversationMembre2", fields: [idUtilisateur_1], references: [idUtilisateur])
+    gardiennage     Gardiennage @relation(fields: [idGardiennage], references: [idGardiennage])
+    messages        Message[]
+}
+
+model Message {
+    idMessage      Int          @id @default(autoincrement())
+    dateEnvoi      String       @db.VarChar(50)
+    texte          String       @db.VarChar(50)
+    image          String?
+    idUtilisateur  Int
+    idConversation Int
+    utilisateur    Utilisateur  @relation(fields: [idUtilisateur], references: [idUtilisateur])
+    conversation   Conversation @relation(fields: [idConversation], references: [idConversation])
+}
+
+model AvoirRole {
+    idUtilisateur Int
+    idRole        Int
+    utilisateur   Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
+    role          Role        @relation(fields: [idRole], references: [idRole])
+
+    @@id([idUtilisateur, idRole])
+}
