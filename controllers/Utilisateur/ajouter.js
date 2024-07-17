@@ -58,8 +58,7 @@ const ajouter = async (req, res) => {
       res.status(200).json({ message: "Utilisateur créé" });
     } catch (error) {
     res.status(500).json({
-      error: "Erreur lors de la création de l'utilisateur",
-      error: error.message
+      error: "Erreur lors de la création de l'utilisateur"
     });
   } finally {
     await prisma.$disconnect();

@@ -7,12 +7,12 @@ const supprimer = async (req, res) => {
   const { pseudo } = req.query;
 
   try {
-      const deletedUser = await prisma.user.update({
+      const deletedUser = await prisma.utilisateur.update({
         where: {
           pseudo: pseudo,
         },
         data: {
-          password: 'archived',
+          motDePasse: 'archived',
         },
       });
     res.status(200).json({ message: "Utilisateur supprimé" });

@@ -11,9 +11,9 @@ const supprimer = require('../controllers/Utilisateur/supprimer');
 const verifier = require('../controllers/Utilisateur/verifier');
 
 router.post('/ajouter', ajouter);
-router.get('/recupererId', authorized, recupererId);
-router.get('/recupererPseudo', authorized, recuperPseudo);
-router.delete('/supprimer', authorized, supprimer);
+router.get('/recupererId', recupererId);
+router.get('/recupererPseudo', recuperPseudo);
+router.delete('/supprimer', supprimer);
 router.post('/verifier', verifier);
 
 module.exports = router;

@@ -7,7 +7,7 @@ const authorized = require('../middleware/auth');
 const ajouter = require('../controllers/AvoirRole/ajouter');
 const supprimer = require('../controllers/AvoirRole/supprimer');
 
-router.post('/ajouter', authorized, ajouter);
-router.delete('/supprimer', authorized, supprimer);
+router.post('/ajouter', ajouter);
+router.delete('/supprimer', supprimer);
 
 module.exports = router;

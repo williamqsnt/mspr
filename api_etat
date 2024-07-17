@@ -1,0 +1,42 @@
+AvoirRole
+    ajouter                                 FONCTIONNE
+    supprimer                               FONCTIONNE
+
+Conseil
+    afficher
+    ajouter
+
+Conversation
+    afficher
+    ajouter
+
+Gardiennage 
+    afficherGardes
+    ajouter
+    ajouterGardien
+
+Message
+    ajouter
+    ajouterImage
+    recupererAll
+
+Plante
+    afficher
+    afficherAll
+    afficherAllByUtilisateur
+    ajouter
+    modifier
+    recupererLocalisation
+    supprimer
+
+Role
+    ajouter                                 FONCTIONNE
+    modifier                                FONCTIONNE
+    supprimer                               FONCTIONNE
+
+Utilisateur
+    ajouter                                 FONCTIONNE
+    recuperId                               FONCTIONNE
+    recupererPseudo                         FONCTIONNE
+    supprimer                               FONCTIONNE
+    verifier                                FONCTIONNE          
