@@ -1,6 +1,10 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Vérifier si le pseudo et le mot de passe correspondent
 const verifier = async (req, res) => {
@@ -22,7 +26,8 @@ const verifier = async (req, res) => {
         const motDePasseCorrect = await bcrypt.compare(motDePasse, utilisateur.motDePasse);
 
         if (motDePasseCorrect) {
-            res.status(200).json({ message: "Authentification réussie" });
+            const token = jwt.sign({ pseudo: utilisateur.pseudo }, JWT_SECRET, { expiresIn: '1h' });
+            res.status(200).json({ message: "Authentification réussie", token: token });
         } else {
             res.status(401).json({ error: "Mot de passe incorrect" });
         }
