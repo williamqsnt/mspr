@@ -21,10 +21,10 @@ Message
     recupererAll
 
 Plante
-    afficher
+    afficher                                FONCTIONNE
     afficherAll
-    afficherAllByUtilisateur
-    ajouter
+    afficherAllByUtilisateur                FONCTIONNE
+    ajouter                                 FONCTIONNE
     modifier
     recupererLocalisation
     supprimer
