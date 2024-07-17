@@ -6,7 +6,9 @@ const ajouterImage = async (req, res) => {
     console.log("Ajouter message avec image route", req);
 
     try {
-        const { image, idUtilisateur, idConversation } = req.body;
+        const { image, idUtilisateur, idConversation } = req.query;
+        const idUtilisateurInt = parseInt(idUtilisateur, 10);
+        const idConversationInt = parseInt(idConversation, 10);
 
         // Utiliser la date et l'heure actuelles
         const dateEnvoi = new Date().toISOString();
@@ -19,8 +21,8 @@ const ajouterImage = async (req, res) => {
                 dateEnvoi,
                 texte,
                 image,
-                idUtilisateur,
-                idConversation,
+                idUtilisateur : idUtilisateurInt,
+                idConversation : idConversationInt
             },
         });
 

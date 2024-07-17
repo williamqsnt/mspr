@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const supprimer = async (req, res) => {
     console.log("Supprimer utilisateur route",req);
 
-  const pseudo = req.params.pseudo;
+  const { pseudo } = req.query;
 
   try {
       const deletedUser = await prisma.user.update({

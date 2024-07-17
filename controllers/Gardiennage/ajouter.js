@@ -6,14 +6,15 @@ const ajouter = async (req, res) => {
     console.log("Ajouter gardiennage route", req);
 
     try {
-        const { dateDebut, dateFin, idPlante } = req.body;
+        const { dateDebut, dateFin, idPlante } = req.query;
+        const idPlanteInt = parseInt(idPlante, 10); // base 10
 
         const newGardiennage = await prisma.gardiennage.create({
             data: {
                 dateDebut: new Date(dateDebut),
                 dateFin: new Date(dateFin),
                 idUtilisateur : null,
-                idPlante
+                idPlante : idPlanteInt
             },
         });
 

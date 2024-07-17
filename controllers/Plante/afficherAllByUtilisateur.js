@@ -6,7 +6,7 @@ const afficherAllPlantesByUtilisateur = async (req, res) => {
     console.log("Afficher toutes les plantes par utilisateur route", req);
 
     try {
-        const { idUtilisateur } = req.params;
+        const { idUtilisateur } = req.query;
 
         const plantes = await prisma.plante.findMany({
             where: {

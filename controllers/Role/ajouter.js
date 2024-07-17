@@ -6,11 +6,11 @@ const ajouter = async (req, res) => {
     console.log("Ajouter rôle route", req);
 
     try {
-        const { libelle } = req.body;
+        const { libelle } = req.query;
 
         const newRole = await prisma.role.create({
             data: {
-                libelle
+                libelle: libelle
             },
         });
 

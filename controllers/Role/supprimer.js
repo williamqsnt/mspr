@@ -6,7 +6,7 @@ const supprimer = async (req, res) => {
     console.log("Supprimer rôle route", req);
 
     try {
-        const { idRole } = req.params;
+        const { idRole } = req.query;
 
         await prisma.role.delete({
             where: {

@@ -6,7 +6,7 @@ const afficher = async (req, res) => {
     console.log("Afficher conversations route", req);
 
     try {
-        const { idUtilisateur } = req.params;
+        const { idUtilisateur } = req.query;
 
         const conversations = await prisma.conversation.findMany({
             where: {

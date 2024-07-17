@@ -6,15 +6,15 @@ const ajouterGardien = async (req, res) => {
     console.log("Ajouter gardien route", req);
 
     try {
-        const { idGardiennage } = req.params;
-        const { idUtilisateur } = req.body;
+        const { idGardiennage, idUtilisateur } = req.query;
+        const idUtilisateurInt = parseInt(idUtilisateur, 10); // base 10
 
         const updatedGardiennage = await prisma.gardiennage.update({
             where: {
                 idGardiennage: parseInt(idGardiennage)
             },
             data: {
-                idUtilisateur
+                idUtilisateur : idUtilisateurInt
             },
         });
 

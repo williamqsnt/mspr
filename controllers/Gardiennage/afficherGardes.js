@@ -6,7 +6,7 @@ const afficherGardes = async (req, res) => {
     console.log("Afficher gardiennages route", req);
 
     try {
-        const { idUtilisateur } = req.params;
+        const { idUtilisateur } = req.query;
 
         const gardiennages = await prisma.gardiennage.findMany({
             where: {

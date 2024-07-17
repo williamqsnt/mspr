@@ -10,13 +10,17 @@ const ajouter = async (req, res) => {
             idUtilisateur,
             idUtilisateur_1,
             idGardiennage
-        } = req.body;
+        } = req.query;
+
+        const idUtilisateurInt = parseInt(idUtilisateur, 10); // base 10
+        const idUtilisateur_1Int = parseInt(idUtilisateur_1, 10);
+        const idGardiennageInt = parseInt(idGardiennage, 10);
 
         const newConversation = await prisma.conversation.create({
             data: {
-                idUtilisateur,
-                idUtilisateur_1,
-                idGardiennage
+                idUtilisateur : idUtilisateurInt,
+                idUtilisateur_1 : idUtilisateur_1Int,
+                idGardiennage : idGardiennageInt
             },
         });
 

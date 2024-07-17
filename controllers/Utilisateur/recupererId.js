@@ -6,7 +6,7 @@ const recupererId = async (req, res) => {
     console.log("Récupérer ID utilisateur par pseudo route", req);
 
     try {
-        const { pseudo } = req.params;
+        const { pseudo } = req.query;
 
         const utilisateur = await prisma.utilisateur.findUnique({
             where: {

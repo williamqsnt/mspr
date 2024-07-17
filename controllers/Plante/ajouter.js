@@ -12,9 +12,10 @@ const ajouter = async (req, res) => {
         description,
         nom,
         adresse,
-        id_proprietaire,
         idUtilisateur
-      } = req.body;
+      } = req.query;
+
+      const idUtilisateurInt = parseInt(idUtilisateur, 10);
   
   
       const newPlante = await prisma.plante.create({
@@ -23,8 +24,7 @@ const ajouter = async (req, res) => {
             description,
             nom,
             adresse,
-            id_proprietaire,
-            idUtilisateur
+            idUtilisateur : idUtilisateurInt
         },
       });
   

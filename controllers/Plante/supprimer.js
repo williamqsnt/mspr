@@ -6,7 +6,7 @@ const supprimer = async (req, res) => {
     console.log("Supprimer plante route", req);
 
     try {
-        const { idPlante } = req.params;
+        const { idPlante } = req.query;
 
         await prisma.plante.delete({
             where: {

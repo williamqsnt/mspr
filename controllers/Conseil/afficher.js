@@ -6,7 +6,7 @@ const afficher = async (req, res) => {
     console.log("afficher conseils par plante route", req);
 
     try {
-        const { idPlante } = req.params;
+        const { idPlante } = req.query;
 
         const conseils = await prisma.conseil.findMany({
             where: {

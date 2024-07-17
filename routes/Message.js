@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const authorized = require('../middleware/authorized');
+const authorized = require('../middleware/auth');
 
 //controllers de message
 const ajouter = require('../controllers/Message/ajouter');

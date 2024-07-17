@@ -7,12 +7,14 @@ const ajouter = async (req, res) => {
     console.log("Ajouter AvoirRole route", req);
 
     try {
-        const { idUtilisateur, idRole } = req.body;
+        const { idUtilisateur, idRole } = req.query;
+        const idUtilisateurInt = parseInt(idUtilisateur, 10); // base 10
+        const idRoleInt = parseInt(idRole, 10);
 
         const newAvoirRole = await prisma.avoirRole.create({
             data: {
-                idUtilisateur,
-                idRole
+                idUtilisateur : idUtilisateurInt,
+                idRole : idRoleInt
             },
         });
 

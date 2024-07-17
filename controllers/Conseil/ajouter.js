@@ -6,13 +6,15 @@ const ajouter = async (req, res) => {
     console.log("Ajouter conseil route", req);
 
     try {
-        const { description, idPlante, idUtilisateur } = req.body;
+        const { description, idPlante, idUtilisateur } = req.query;
+        const idPlanteInt = parseInt(idPlante, 10); // base 10
+        const idUtilisateurInt = parseInt(idUtilisateur, 10);
 
         const newConseil = await prisma.conseil.create({
             data: {
                 description,
-                idPlante,
-                idUtilisateur
+                idPlante : idPlanteInt,
+                idUtilisateur : idUtilisateurInt
             },
         });
 

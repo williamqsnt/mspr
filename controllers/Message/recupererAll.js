@@ -6,7 +6,7 @@ const recupererAll = async (req, res) => {
     console.log("Afficher tous les messages route", req);
 
     try {
-        const { idConversation } = req.params;
+        const { idConversation } = req.query;
 
         const messages = await prisma.message.findMany({
             where: {

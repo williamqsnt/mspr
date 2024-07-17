@@ -6,7 +6,7 @@ const modifier = async (req, res) => {
     console.log("Modifier rôle route", req);
 
     try {
-        const { idRole, libelle } = req.params;
+        const { idRole, libelle } = req.query;
 
         const updatedRole = await prisma.role.update({
             where: {
