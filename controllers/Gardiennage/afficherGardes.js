@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Afficher les gardiennages pour un utilisateur
-exports.afficherGardes = async (req, res) => {
+const afficherGardes = async (req, res) => {
     console.log("Afficher gardiennages route", req);
 
     try {
@@ -22,3 +22,5 @@ exports.afficherGardes = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = afficherGardes;

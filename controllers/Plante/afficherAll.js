@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Afficher toutes les plantes
-exports.afficherAllPlantes = async (req, res) => {
+const afficherAllPlantes = async (req, res) => {
     console.log("Afficher toutes les plantes route", req);
 
     try {
@@ -16,3 +16,5 @@ exports.afficherAllPlantes = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = afficherAllPlantes;

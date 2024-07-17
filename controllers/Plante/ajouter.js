@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 
 // Ajouter une plante
-exports.ajouter = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter plante route", req);
   
     try {
@@ -36,3 +36,5 @@ exports.ajouter = async (req, res) => {
       await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

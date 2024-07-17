@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Afficher les conversations pour un utilisateur
-exports.afficherConversations = async (req, res) => {
+const afficher = async (req, res) => {
     console.log("Afficher conversations route", req);
 
     try {
@@ -25,3 +25,5 @@ exports.afficherConversations = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = afficher;

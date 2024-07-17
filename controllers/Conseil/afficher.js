@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Récupérer les conseils pour une plante
-exports.afficher = async (req, res) => {
+const afficher = async (req, res) => {
     console.log("afficher conseils par plante route", req);
 
     try {
@@ -25,3 +25,5 @@ exports.afficher = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = afficher;

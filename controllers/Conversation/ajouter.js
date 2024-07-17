@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter une conversation
-exports.ajouterConversation = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter conversation route", req);
 
     try {
@@ -28,3 +28,5 @@ exports.ajouterConversation = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

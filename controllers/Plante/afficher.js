@@ -1,9 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// Afficher toutes les plantes en fonction de l'idPlante
-exports.afficherAllPlantesByUtilisateur = async (req, res) => {
-    console.log("Afficher toutes les plantes par id route", req);
+// Afficher une plante par id
+const afficher = async (req, res) => {
+    console.log("Afficher une plante route", req);
 
     try {
         const { idPlante } = req.params;
@@ -22,3 +22,5 @@ exports.afficherAllPlantesByUtilisateur = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = afficher;

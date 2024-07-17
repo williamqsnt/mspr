@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Modifier un rôle
-exports.modifierRole = async (req, res) => {
+const modifier = async (req, res) => {
     console.log("Modifier rôle route", req);
 
     try {
@@ -25,3 +25,5 @@ exports.modifierRole = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = modifier;

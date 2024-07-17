@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Afficher tous les messages en fonction de l'idConversation
-exports.recupererAll = async (req, res) => {
+const recupererAll = async (req, res) => {
     console.log("Afficher tous les messages route", req);
 
     try {
@@ -25,3 +25,5 @@ exports.recupererAll = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = recupererAll;

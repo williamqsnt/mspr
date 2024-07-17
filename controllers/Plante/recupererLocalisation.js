@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Afficher les adresses des plantes sans gardien
-exports.afficherAdressesSansGardiennage = async (req, res) => {
+const recupererLocalisation = async (req, res) => {
     console.log("Afficher les adresses des plantes sans gardiennage route", req);
 
     try {
@@ -27,3 +27,5 @@ exports.afficherAdressesSansGardiennage = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = recupererLocalisation;

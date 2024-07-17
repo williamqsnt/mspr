@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter un rôle
-exports.ajouterRole = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter rôle route", req);
 
     try {
@@ -22,3 +22,5 @@ exports.ajouterRole = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

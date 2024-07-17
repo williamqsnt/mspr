@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter un conseil
-exports.ajouterConseil = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter conseil route", req);
 
     try {
@@ -24,3 +24,5 @@ exports.ajouterConseil = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

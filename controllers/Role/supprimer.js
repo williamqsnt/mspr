@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Supprimer un rôle
-exports.supprimerRole = async (req, res) => {
+const supprimer = async (req, res) => {
     console.log("Supprimer rôle route", req);
 
     try {
@@ -22,3 +22,5 @@ exports.supprimerRole = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = supprimer;

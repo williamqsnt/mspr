@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Supprimer une plante
-exports.supprimerPlante = async (req, res) => {
+const supprimer = async (req, res) => {
     console.log("Supprimer plante route", req);
 
     try {
@@ -22,3 +22,5 @@ exports.supprimerPlante = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = supprimer;

@@ -1,8 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+
 // Ajouter une relation AvoirRole
-exports.ajouterAvoirRole = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter AvoirRole route", req);
 
     try {
@@ -23,3 +24,5 @@ exports.ajouterAvoirRole = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

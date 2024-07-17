@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter un message
-exports.ajouterMessage = async (req, res) => {
+const ajouter = async (req, res) => {
     console.log("Ajouter message route", req);
 
     try {
@@ -29,3 +29,5 @@ exports.ajouterMessage = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouter;

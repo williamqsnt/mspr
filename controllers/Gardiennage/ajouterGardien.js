@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter un gardien à un gardiennage
-exports.ajouterGardien = async (req, res) => {
+const ajouterGardien = async (req, res) => {
     console.log("Ajouter gardien route", req);
 
     try {
@@ -26,3 +26,5 @@ exports.ajouterGardien = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouterGardien;

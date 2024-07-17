@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Modifier une plante
-exports.modifierPlante = async (req, res) => {
+const modifier = async (req, res) => {
     console.log("Modifier plante route", req);
 
     try {
@@ -29,3 +29,5 @@ exports.modifierPlante = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = modifier;

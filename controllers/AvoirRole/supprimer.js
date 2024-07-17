@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Supprimer une relation AvoirRole
-exports.supprimerAvoirRole = async (req, res) => {
+const supprimer = async (req, res) => {
     console.log("Supprimer AvoirRole route", req);
 
     try {
@@ -25,3 +25,5 @@ exports.supprimerAvoirRole = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = supprimer;

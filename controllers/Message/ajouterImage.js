@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Ajouter un message avec une image
-exports.ajouterMessageImage = async (req, res) => {
+const ajouterImage = async (req, res) => {
     console.log("Ajouter message avec image route", req);
 
     try {
@@ -32,3 +32,5 @@ exports.ajouterMessageImage = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = ajouterImage;
