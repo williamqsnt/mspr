@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-exports.delete = async (req, res) => {
+const supprimer = async (req, res) => {
     console.log("Supprimer utilisateur route",req);
 
   const pseudo = req.params.pseudo;
@@ -26,4 +26,4 @@ exports.delete = async (req, res) => {
   }
 };
 
-  
+module.exports = supprimer;

@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
 // Vérifier si le pseudo et le mot de passe correspondent
-exports.verifier = async (req, res) => {
+const verifier = async (req, res) => {
     console.log("Vérifier pseudo et mot de passe route", req);
 
     try {
@@ -33,4 +33,5 @@ exports.verifier = async (req, res) => {
         await prisma.$disconnect();
     }
 };
-``
+
+module.exports = verifier;

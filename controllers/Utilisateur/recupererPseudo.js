@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Récupérer le pseudo de l'utilisateur en fonction de l'ID
-exports.recupererPseudo = async (req, res) => {
+const recupererPseudo = async (req, res) => {
     console.log("Récupérer pseudo utilisateur par ID route", req);
 
     try {
@@ -29,3 +29,5 @@ exports.recupererPseudo = async (req, res) => {
         await prisma.$disconnect();
     }
 };
+
+module.exports = recupererPseudo;

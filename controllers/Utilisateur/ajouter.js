@@ -16,7 +16,7 @@ function encrypt(text) {
 }
 
 // Ajouter un utilisateur
-exports.ajouter = async (req, res) => {
+const ajouter = async (req, res) => {
   console.log("Ajouter utilisateur route",req);
 
   let salt = bcrypt.genSaltSync(10);
@@ -54,3 +54,5 @@ exports.ajouter = async (req, res) => {
     await prisma.$disconnect();
   }
 };
+
+module.exports = ajouter;
