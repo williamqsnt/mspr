@@ -11,10 +11,12 @@ const ajouter = require('../controllers/Plante/ajouter');
 const recupererLocalisation = require('../controllers/Plante/recupererLocalisation');
 const modifier = require('../controllers/Plante/modifier');
 const supprimer = require('../controllers/Plante/supprimer');
+const ajouterPhoto = require('../controllers/Plante/ajouterPhoto');
 
 router.get('/afficher', afficher);
 router.get('/afficherAll', afficherAll);
 router.get('/afficherAllByUtilisateur', afficherAllByUtilisateur);
+router.post('/ajouterPhoto', ajouterPhoto);
 router.post('/ajouter', ajouter);
 router.get('/recupererLocalisation', recupererLocalisation);
 router.put('/modifier', modifier);
