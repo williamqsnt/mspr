@@ -10,14 +10,14 @@ datasource db {
 
 model Utilisateur {
     idUtilisateur  Int            @id @default(autoincrement())
-    nom            String         @db.VarChar(50)
-    prenom         String         @db.VarChar(50)
-    dateNaissance  DateTime       @db.Date
-    numero         String         @unique @db.VarChar(50)
-    email          String         @unique @db.VarChar(50)
-    adresse        String         @db.VarChar(50)
-    pseudo         String         @unique @db.VarChar(50)
-    motDePasse     String         @db.VarChar(50)
+    nom            String         @db.VarChar(500)
+    prenom         String         @db.VarChar(500)
+    dateNaissance  String         @db.VarChar(500)
+    numero         String         @unique @db.VarChar(500)
+    email          String         @unique @db.VarChar(500)
+    adresse        String         @db.VarChar(500)
+    pseudo         String         @unique @db.VarChar(500)
+    motDePasse     String         @db.VarChar(500)
     plantes        Plante[]
     conseils       Conseil[]
     gardiennages   Gardiennage[]
