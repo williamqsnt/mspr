@@ -27,7 +27,7 @@ const ajouterPhoto = async (req, res) => {
     res.status(200).json({ imageUrl: data.Location });
   } catch (error) {
     console.error('Error uploading image:', error);
-    res.status(500).json({ error: 'Error uploading image' });
+    res.status(500).json({ error: 'Error uploading image' }, { imageUrl: data.Location });
   }
 };
 
