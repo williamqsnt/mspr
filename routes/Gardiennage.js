@@ -8,8 +8,8 @@ const afficherGardes = require('../controllers/Gardiennage/afficherGardes');
 const ajouter = require('../controllers/Gardiennage/ajouter');
 const ajouterGardien = require('../controllers/Gardiennage/ajouterGardien');
 
-router.get('/afficherGardes', authorized, afficherGardes);
-router.post('/ajouter', authorized, ajouter);
-router.put('/ajouterGardien', authorized, ajouterGardien);
+router.get('/afficherGardes', afficherGardes);
+router.post('/ajouter', ajouter);
+router.put('/ajouterGardien', ajouterGardien);
 
 module.exports = router;

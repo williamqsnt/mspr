@@ -7,7 +7,7 @@ const authorized = require('../middleware/auth');
 const ajouter = require('../controllers/Conversation/ajouter');
 const afficher = require('../controllers/Conversation/afficher');
 
-router.post('/ajouter', authorized, ajouter);
-router.get('/afficher', authorized, afficher);
+router.post('/ajouter', ajouter);
+router.get('/afficher', afficher);
 
 module.exports = router;

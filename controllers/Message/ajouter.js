@@ -6,7 +6,7 @@ const ajouter = async (req, res) => {
     console.log("Ajouter message route", req);
 
     try {
-        const { texte, idUtilisateur, idConversation } = req.query;
+        const { contenu, idUtilisateur, idConversation } = req.query;
         const idConversationInt = parseInt(idConversation, 10); // base 10
         const idUtilisateurInt = parseInt(idUtilisateur, 10);
 
@@ -16,8 +16,7 @@ const ajouter = async (req, res) => {
         const newMessage = await prisma.message.create({
             data: {
                 dateEnvoi,
-                texte,
-                image : null,
+                contenu,
                 idUtilisateur : idUtilisateurInt,
                 idConversation : idConversationInt
             },

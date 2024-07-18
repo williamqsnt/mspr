@@ -80,8 +80,7 @@ model Conversation {
 model Message {
     idMessage      Int          @id @default(autoincrement())
     dateEnvoi      String       @db.VarChar(50)
-    texte          String       @db.VarChar(50)
-    image          String?
+    contenu        String
     idUtilisateur  Int
     idConversation Int
     utilisateur    Utilisateur  @relation(fields: [idUtilisateur], references: [idUtilisateur])
