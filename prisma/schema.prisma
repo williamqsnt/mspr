@@ -18,13 +18,13 @@ model Utilisateur {
     adresse        String         @db.VarChar(500)
     pseudo         String         @unique @db.VarChar(500)
     motDePasse     String         @db.VarChar(500)
+    estBotaniste   Boolean        @default(false)
     plantes        Plante[]
     conseils       Conseil[]
     gardiennages   Gardiennage[]
     conversations  Conversation[] @relation("ConversationMembre1")
     conversations2 Conversation[] @relation("ConversationMembre2")
     messages       Message[]
-    roles          AvoirRole[]
 }
 
 model Plante {
@@ -38,12 +38,6 @@ model Plante {
     utilisateur   Utilisateur   @relation(fields: [idUtilisateur], references: [idUtilisateur])
     conseils      Conseil[]
     gardiennages  Gardiennage[]
-}
-
-model Role {
-    idRole       Int         @id @default(autoincrement())
-    libelle      String      @db.VarChar(50)
-    utilisateurs AvoirRole[]
 }
 
 model Conseil {
@@ -85,13 +79,4 @@ model Message {
     idConversation Int
     utilisateur    Utilisateur  @relation(fields: [idUtilisateur], references: [idUtilisateur])
     conversation   Conversation @relation(fields: [idConversation], references: [idConversation])
-}
-
-model AvoirRole {
-    idUtilisateur Int
-    idRole        Int
-    utilisateur   Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
-    role          Role        @relation(fields: [idRole], references: [idRole])
-
-    @@id([idUtilisateur, idRole])
 }
