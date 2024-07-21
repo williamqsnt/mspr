@@ -1,19 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 const prisma = new PrismaClient();
-const crypto = require('crypto');
-
-
-const encryptionKey = crypto.randomBytes(32);
-const iv = crypto.randomBytes(16);
-
-function encrypt(text) {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey), iv);
-    let encrypted = cipher.update(text);
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return iv.toString('hex') + ':' + encrypted.toString('hex');
-}
+const { encrypt } = require('../../utils/cryptoUtils');
 
 // Ajouter un utilisateur
 const ajouter = async (req, res) => {
