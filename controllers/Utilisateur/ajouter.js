@@ -4,7 +4,8 @@ const prisma = new PrismaClient();
 const crypto = require('crypto');
 
 
-const encryptionKey = Buffer.from(process.env.ENCRYPTION_KEY, 'utf-8');
+const encryptionKey = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
 
 function encrypt(text) {
     const iv = crypto.randomBytes(16);
@@ -31,6 +32,16 @@ const ajouter = async (req, res) => {
     const encryptedNum = encrypt(numero);
     const encryptedEmail = encrypt(email);
     const encryptedAdresse = encrypt(adresse);
+
+        // Log the lengths of the encrypted fields
+        console.log("Length of encryptedNom: ", encryptedNom.length);
+        console.log("Length of encryptedPrenom: ", encryptedPrenom.length);
+        console.log("Length of encryptedDateDeNaissance: ", encryptedDateDeNaissance.length);
+        console.log("Length of encryptedNum: ", encryptedNum.length);
+        console.log("Length of encryptedEmail: ", encryptedEmail.length);
+        console.log("Length of encryptedAdresse: ", encryptedAdresse.length);
+        console.log("Length of pseudo: ", pseudo.length);
+        console.log("Length of hashedPassword: ", hashedPassword.length);
 
       const newUtilisateur = await prisma.utilisateur.create({
         data: {
