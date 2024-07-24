@@ -16,6 +16,7 @@ const recupererLocalisation = async (req, res) => {
             },
             select: {
                 adresse: true,
+                idPlante: true
             },
         });
 
