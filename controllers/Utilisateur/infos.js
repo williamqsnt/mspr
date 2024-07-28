@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 const { decrypt } = require('../../utils/cryptoUtils');
 
 
-const afficherProfil = async (req, res) => {
+const infos = async (req, res) => {
     console.log("Afficher profil route", req);
 
     try {
@@ -47,4 +47,4 @@ const afficherProfil = async (req, res) => {
     }
 };
 
-module.exports = { afficherProfil };
+module.exports = { infos };
