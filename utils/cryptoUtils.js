@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 
 const encryptionKey = process.env.ENCRYPTION_KEY;
-const iv = process.env.IV;
+const iv = crypto.randomBytes(16);
 
 function encrypt(text) {
     const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey), Buffer.from(iv));
