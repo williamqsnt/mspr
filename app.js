@@ -12,7 +12,6 @@ app.use("/api/gardiennage", require("./routes/Gardiennage"));
 app.use("/api/message", require("./routes/Message"));
 app.use("/api/plante", require("./routes/Plante"));
 app.use("/api/utilisateur", require("./routes/Utilisateur"));
-app.use("/api/profil", require("./routes/Profil"));
 
 app.get("/", (req, res) => {
   res.send("Le serveur Express a démaré !");
