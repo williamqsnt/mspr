@@ -47,4 +47,4 @@ const infos = async (req, res) => {
     }
 };
 
-module.exports = { infos };
+module.exports = infos ;
