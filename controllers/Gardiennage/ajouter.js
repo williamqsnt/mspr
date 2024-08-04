@@ -2,27 +2,33 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const convertirDate = (dateStr) => {
-    const [jour, mois, annee] = dateStr.split('/');
-    return new Date(`${annee}-${mois}-${jour}T00:00:00.000Z`).toISOString();
+    if (!dateStr) return null;
+    const [year, month, day] = dateStr.split('-');
+    return new Date(`${year}-${month}-${day}T00:00:00.000Z`).toISOString();
 }
 
-// Ajouter un gardiennage
 const ajouter = async (req, res) => {
-    console.log("Ajouter gardiennage route", req);
-
     try {
         const { dateDebut, dateFin, idPlante } = req.query;
-        const idPlanteInt = parseInt(idPlante, 10); // base 10
+        const idPlanteInt = parseInt(idPlante, 10);
+
+        if (!dateDebut || !dateFin) {
+            return res.status(400).json({ error: 'Date de début et date de fin sont requises' });
+        }
 
         const dateDebutConverted = convertirDate(dateDebut);
         const dateFinConverted = convertirDate(dateFin);
+
+        if (!dateDebutConverted || !dateFinConverted) {
+            return res.status(400).json({ error: 'Dates invalides' });
+        }
 
         const newGardiennage = await prisma.gardiennage.create({
             data: {
                 dateDebut: dateDebutConverted,
                 dateFin: dateFinConverted,
-                idUtilisateur : null,
-                idPlante : idPlanteInt
+                idUtilisateur: null,
+                idPlante: idPlanteInt
             },
         });
 
