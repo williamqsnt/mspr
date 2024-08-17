@@ -6,9 +6,11 @@ const authorized = require('../middleware/auth');
 //controllers de conversation
 const ajouter = require('../controllers/Conversation/ajouter');
 const afficher = require('../controllers/Conversation/afficher');
+const recupererPhotoPlante = require('../controllers/Conversation/recupererPhotoPlante');
 
 router.post('/ajouter', ajouter);
 router.get('/afficher', afficher);
+router.get('/recupererPhotoPlante', recupererPhotoPlante);
 
 // Récupérer les conversations
 /**
