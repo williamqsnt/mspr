@@ -13,12 +13,12 @@ const estBotaniste = require('../controllers/Utilisateur/estBotaniste');
 const infos = require('../controllers/Utilisateur/infos');
 
 router.post('/ajouter', ajouter);
-router.get('/recupererId', recupererId);
-router.get('/recupererPseudo', recuperPseudo);
-router.get('/estBotaniste', estBotaniste);
-router.delete('/supprimer', supprimer);
+router.get('/recupererId', authorized, recupererId);
+router.get('/recupererPseudo', authorized, recuperPseudo);
+router.get('/estBotaniste', authorized, estBotaniste);
+router.delete('/supprimer', authorized, supprimer);
 router.post('/verifier', verifier);
-router.get('/infos', infos);
+router.get('/infos', authorized, infos);
 
 /**
 * @swagger

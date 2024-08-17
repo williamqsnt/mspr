@@ -14,15 +14,15 @@ const modifier = require('../controllers/Plante/modifier');
 const supprimer = require('../controllers/Plante/supprimer');
 const ajouterPhoto = require('../controllers/Plante/ajouterPhoto');
 
-router.get('/afficher', afficher);
-router.get('/afficherAll', afficherAll);
-router.get('/afficherAllByUtilisateur', afficherAllByUtilisateur);
-router.post('/ajouterPhoto', ajouterPhoto);
-router.post('/ajouter', ajouter);
-router.get('/recupererLocalisation', recupererLocalisation);
-router.get('/recupererInfos', recupererInfos);
-router.put('/modifier', modifier);
-router.delete('/supprimer', supprimer);
+router.get('/afficher', authorized, afficher);
+router.get('/afficherAll', authorized, afficherAll);
+router.get('/afficherAllByUtilisateur', authorized, afficherAllByUtilisateur);
+router.post('/ajouterPhoto', authorized, ajouterPhoto);
+router.post('/ajouter', authorized, ajouter);
+router.get('/recupererLocalisation', authorized, recupererLocalisation);
+router.get('/recupererInfos', authorized, recupererInfos);
+router.put('/modifier', authorized, modifier);
+router.delete('/supprimer', authorized, supprimer);
 
 /**
 * @swagger

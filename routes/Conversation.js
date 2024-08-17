@@ -8,9 +8,9 @@ const ajouter = require('../controllers/Conversation/ajouter');
 const afficher = require('../controllers/Conversation/afficher');
 const recupererPhotoPlante = require('../controllers/Conversation/recupererPhotoPlante');
 
-router.post('/ajouter', ajouter);
-router.get('/afficher', afficher);
-router.get('/recupererPhotoPlante', recupererPhotoPlante);
+router.post('/ajouter', authorized, ajouter);
+router.get('/afficher', authorized, afficher);
+router.get('/recupererPhotoPlante', authorized, recupererPhotoPlante);
 
 // Récupérer les conversations
 /**

@@ -7,8 +7,8 @@ const authorized = require('../middleware/auth');
 const afficher = require('../controllers/Conseil/afficher');
 const ajouter = require('../controllers/Conseil/ajouter');
 
-router.get('/afficher', afficher);
-router.post('/ajouter', ajouter);
+router.get('/afficher', authorized, afficher);
+router.post('/ajouter', authorized, ajouter);
 
 // Ajouter un conseil
 /**

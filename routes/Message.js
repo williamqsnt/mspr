@@ -7,8 +7,8 @@ const authorized = require('../middleware/auth');
 const ajouter = require('../controllers/Message/ajouter');
 const recupererAll = require('../controllers/Message/recupererAll');
 
-router.post('/ajouter', ajouter);
-router.get('/recupererAll', recupererAll);
+router.post('/ajouter', authorized, ajouter);
+router.get('/recupererAll', authorized, recupererAll);
 
 // Ajouter un message
 /**
