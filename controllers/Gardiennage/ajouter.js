@@ -1,5 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const Joi = require('joi');
+const gardiennageSchema = require('../schemas/gardiennageSchema');
 
 const convertirDate = (dateStr) => {
     if (!dateStr) return null;
@@ -11,6 +13,17 @@ const ajouter = async (req, res) => {
     try {
         const { dateDebut, dateFin, idPlante } = req.query;
         const idPlanteInt = parseInt(idPlante, 10);
+
+                // Valider les données avec Joi
+                const { error, value } = gardiennageSchema.validate({
+                    dateDebut: convertirDate(dateDebut),
+                    dateFin: convertirDate(dateFin),
+                    idPlante: idPlanteInt
+                });
+
+                if (error) {
+                    return res.status(400).json({ error: error.details });
+                }
 
         if (!dateDebut || !dateFin) {
             return res.status(400).json({ error: 'Date de début et date de fin sont requises' });
