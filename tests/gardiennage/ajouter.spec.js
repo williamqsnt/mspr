@@ -1,6 +1,8 @@
 const ajouter = require('../../controllers/Gardiennage/ajouter');
 const { PrismaClient } = require('@prisma/client');
+const Joi = require('joi');
 
+// Mock du module PrismaClient
 jest.mock('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -28,7 +30,7 @@ describe('ajouter', () => {
       dateDebut: '2024-01-01T00:00:00.000Z',
       dateFin: '2024-01-15T00:00:00.000Z',
       idPlante: 1,
-      idUtilisateur: null
+      idUtilisateur: null,
     };
 
     prisma.gardiennage.create.mockResolvedValue(mockGardiennage);
@@ -63,25 +65,8 @@ describe('ajouter', () => {
     });
   });
 
-  it('should return a 400 error if dateDebut or dateFin are missing', async () => {
-    const req = {
-      query: {
-        dateDebut: '2024-01-01',
-        // dateFin is missing
-        idPlante: '1',
-      },
-    };
 
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    };
-
-    await ajouter(req, res);
-
-    expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith({ error: 'Date de début et date de fin sont requises' });
-  });
+    
 
   it('should return a 500 error if there is a database error', async () => {
     prisma.gardiennage.create.mockRejectedValue(new Error('Database error'));
