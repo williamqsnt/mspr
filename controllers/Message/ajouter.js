@@ -1,8 +1,8 @@
+// routes/Message.js
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// Ajouter un message
-const ajouter = async (req, res) => {
+const ajouter = (io) => async (req, res) => {
     console.log("Ajouter message route", req);
 
     try {
@@ -21,6 +21,9 @@ const ajouter = async (req, res) => {
                 idConversation : idConversationInt
             },
         });
+
+        // Émettre l'événement `nouveauMessage` via Socket.IO
+        io.emit("nouveauMessage", newMessage);
 
         res.status(200).json({ message: "Message créé", message: newMessage });
     } catch (error) {

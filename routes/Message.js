@@ -3,12 +3,19 @@ const router = express.Router();
 
 const authorized = require('../middleware/auth');
 
-//controllers de message
-const ajouter = require('../controllers/Message/ajouter');
-const recupererAll = require('../controllers/Message/recupererAll');
+// Contrôleurs de message
+const ajouterController = require('../controllers/Message/ajouter');
+const recupererAllController = require('../controllers/Message/recupererAll');
 
-router.post('/ajouter', authorized, ajouter);
-router.get('/recupererAll', authorized, recupererAll);
+// Passer `io` à la fonction `ajouterController`
+module.exports = (io) => {
+  // Utiliser une fonction middleware pour ajouter `io` à la fonction `ajouter`
+  router.post('/ajouter', authorized, ajouterController(io));
+  router.get('/recupererAll', authorized, recupererAllController);
+
+  return router;
+};
+
 
 // Ajouter un message
 /**
@@ -124,5 +131,3 @@ router.get('/recupererAll', authorized, recupererAll);
  *       500:
  *         description: Erreur serveur
  */
-
-module.exports = router;
