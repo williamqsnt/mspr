@@ -34,7 +34,7 @@ describe('verifier', () => {
   it('should return a 404 error if the user is not found', async () => {
     prisma.utilisateur.findUnique.mockResolvedValue(null);
 
-    const req = { query: { pseudo: 'testuser', motDePasse: 'password123' } };
+    const req = { body: { pseudo: 'testuser', motDePasse: 'password123' } };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -53,7 +53,7 @@ describe('verifier', () => {
     prisma.utilisateur.findUnique.mockResolvedValue({ pseudo: 'testuser', motDePasse: 'hashedpassword' });
     bcrypt.compare.mockResolvedValue(false);
 
-    const req = { query: { pseudo: 'testuser', motDePasse: 'wrongpassword' } };
+    const req = { body: { pseudo: 'testuser', motDePasse: 'wrongpassword' } };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -72,7 +72,7 @@ describe('verifier', () => {
     bcrypt.compare.mockResolvedValue(true);
     jwt.sign.mockReturnValue(mockToken);
 
-    const req = { query: { pseudo: 'testuser', motDePasse: 'password123' } };
+    const req = { body: { pseudo: 'testuser', motDePasse: 'password123' } };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -92,7 +92,7 @@ describe('verifier', () => {
   it('should return a 500 error if an exception is thrown', async () => {
     prisma.utilisateur.findUnique.mockRejectedValue(new Error('Database error'));
 
-    const req = { query: { pseudo: 'testuser', motDePasse: 'password123' } };
+    const req = { body: { pseudo: 'testuser', motDePasse: 'password123' } };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),

@@ -43,7 +43,7 @@ describe('ajouter', () => {
     prisma.utilisateur.create.mockResolvedValue(mockUser);
 
     const req = {
-      query: {
+      body: {
         nom: 'NomTest',
         prenom: 'PrenomTest',
         dateNaissance: '1990-01-01',
@@ -84,7 +84,7 @@ describe('ajouter', () => {
     prisma.utilisateur.create.mockRejectedValue(new Error('Database error'));
 
     const req = {
-      query: {
+      body: {
         nom: 'NomTest',
         prenom: 'PrenomTest',
         dateNaissance: '1990-01-01',
