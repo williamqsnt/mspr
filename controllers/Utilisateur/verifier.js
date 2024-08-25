@@ -10,7 +10,7 @@ const verifier = async (req, res) => {
     console.log("Vérifier pseudo et mot de passe route", req);
 
     try {
-        const { pseudo, motDePasse } = req.query;
+        const { pseudo, motDePasse } = req.body;
 
         const utilisateur = await prisma.utilisateur.findUnique({
             where: {

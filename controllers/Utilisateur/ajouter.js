@@ -10,7 +10,7 @@ const ajouter = async (req, res) => {
   let salt = bcrypt.genSaltSync(10);
 
   try {
-    const { nom, prenom, dateNaissance, motDePasse, numero, email, adresse, pseudo} = req.query;
+    const { nom, prenom, dateNaissance, motDePasse, numero, email, adresse, pseudo} = req.body;
 
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(motDePasse, saltRounds);
