@@ -15,7 +15,6 @@ model Utilisateur {
     dateNaissance  String         @db.VarChar(500)
     numero         String         @unique @db.VarChar(500)
     email          String         @unique @db.VarChar(500)
-    adresse        String         @db.VarChar(500)
     pseudo         String         @unique @db.VarChar(500)
     motDePasse     String         @db.VarChar(500)
     estBotaniste   Boolean        @default(false)
@@ -29,16 +28,24 @@ model Utilisateur {
 
 model Plante {
     idPlante    Int     @id @default(autoincrement())
-    espece      String  @db.VarChar(50)
     description String
     nom         String  @db.VarChar(50)
     adresse     String  @db.VarChar(50)
     photoUrl    String? @db.VarChar(255)
     idUtilisateur Int
+    idEspece    Int     
     utilisateur   Utilisateur   @relation(fields: [idUtilisateur], references: [idUtilisateur])
+    espece        Espece        @relation(fields: [idEspece], references: [idEspece])
     conseils      Conseil[]
     gardiennages  Gardiennage[]
 }
+
+model Espece {
+    idEspece    Int         @id @default(autoincrement())
+    libelle   String      @db.VarChar(50)
+    plantes     Plante[]    // Relation avec le modèle Plante
+}
+
 
 model Conseil {
     idConseil     Int         @id @default(autoincrement())

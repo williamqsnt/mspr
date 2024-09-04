@@ -13,7 +13,13 @@ const recupererInfos = async (req, res) => {
                         idUtilisateur: null,
                     },
                 },
-            }
+            },include: {
+                espece: {
+                    select: {
+                        libelle: true,
+                    },
+                },
+            },
         });
 
         res.status(200).json({ plantes });

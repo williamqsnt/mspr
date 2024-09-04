@@ -10,7 +10,7 @@ const ajouter = async (req, res) => {
   let salt = bcrypt.genSaltSync(10);
 
   try {
-    const { nom, prenom, dateNaissance, motDePasse, numero, email, adresse, pseudo} = req.body;
+    const { nom, prenom, dateNaissance, motDePasse, numero, email, pseudo} = req.body;
 
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(motDePasse, saltRounds);
@@ -19,7 +19,6 @@ const ajouter = async (req, res) => {
     const encryptedDateDeNaissance = encrypt(dateNaissance);
     const encryptedNum = encrypt(numero);
     const encryptedEmail = encrypt(email);
-    const encryptedAdresse = encrypt(adresse);
 
         // Log the lengths of the encrypted fields
         console.log("Length of encryptedNom: ", encryptedNom.length);
@@ -27,7 +26,6 @@ const ajouter = async (req, res) => {
         console.log("Length of encryptedDateDeNaissance: ", encryptedDateDeNaissance.length);
         console.log("Length of encryptedNum: ", encryptedNum.length);
         console.log("Length of encryptedEmail: ", encryptedEmail.length);
-        console.log("Length of encryptedAdresse: ", encryptedAdresse.length);
         console.log("Length of pseudo: ", pseudo.length);
         console.log("Length of hashedPassword: ", hashedPassword.length);
 
@@ -38,7 +36,6 @@ const ajouter = async (req, res) => {
             dateNaissance : encryptedDateDeNaissance,
             numero : encryptedNum,
             email : encryptedEmail,
-            adresse : encryptedAdresse,
             pseudo,
             motDePasse : hashedPassword
         },

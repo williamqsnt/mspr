@@ -25,6 +25,11 @@ const afficher = async (req, res) => {
                         dateFin: true
                     },
                 },
+                espece: {
+                    select: {
+                        libelle: true,
+                    },
+                },
             },
         });
 

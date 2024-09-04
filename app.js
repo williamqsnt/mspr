@@ -22,6 +22,7 @@ app.use("/api/gardiennage", require("./routes/Gardiennage"));
 app.use("/api/message", require("./routes/Message")(io)); // Passez `io` ici
 app.use("/api/plante", require("./routes/Plante"));
 app.use("/api/utilisateur", require("./routes/Utilisateur"));
+app.use("/api/espece", require("./routes/Espece"));
 
 app.get("/", (req, res) => {
   res.send("Le serveur Express a démarré !");
