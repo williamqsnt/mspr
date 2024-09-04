@@ -6,14 +6,16 @@ const modifier = async (req, res) => {
     console.log("Modifier plante route", req);
 
     try {
-        const { idPlante, espece, description, nom, adresse } = req.query;
+        const { idPlante, idEspece, description, nom, adresse } = req.query;
+
+        const idEspeceInt = parseInt(idEspece, 10);
 
         const updatedPlante = await prisma.plante.update({
             where: {
                 idPlante: parseInt(idPlante, 10),
             },
             data: {
-                espece,
+                idEspece: idEspeceInt,
                 description,
                 nom,
                 adresse
