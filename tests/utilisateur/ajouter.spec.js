@@ -63,7 +63,7 @@ describe('ajouter', () => {
     await ajouter(req, res);
 
     expect(bcrypt.hash).toHaveBeenCalledWith('password123', 10);
-    expect(encrypt).toHaveBeenCalledTimes(6); // Each field should be encrypted
+    expect(encrypt).toHaveBeenCalledTimes(5); // Each field should be encrypted
     expect(prisma.utilisateur.create).toHaveBeenCalledWith({
       data: {
         nom: 'encryptedNomTest',
@@ -71,7 +71,6 @@ describe('ajouter', () => {
         dateNaissance: 'encrypted1990-01-01',
         numero: 'encrypted0123456789',
         email: 'encryptedtest@example.com',
-        adresse: 'encrypted123 Rue Test',
         pseudo: 'testuser',
         motDePasse: 'hashedPassword',
       },

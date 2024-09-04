@@ -46,7 +46,15 @@ describe('recupererInfos', () => {
           },
         },
       },
+      include: {
+        espece: {
+          select: {
+            libelle: true,
+          },
+        },
+      },
     });
+    
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ plantes: mockPlantes });
   });

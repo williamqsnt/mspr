@@ -37,7 +37,7 @@ describe('ajouter', () => {
 
     const req = {
       query: {
-        espece: 'Ficus',
+        idEspece: 1,
         description: 'Plante d\'intérieur',
         nom: 'Ficus Lyrata',
         adresse: '123 Rue des Plantes',
@@ -55,7 +55,7 @@ describe('ajouter', () => {
 
     expect(prisma.plante.create).toHaveBeenCalledWith({
       data: {
-        espece: 'Ficus',
+        idEspece: 1,
         description: 'Plante d\'intérieur',
         nom: 'Ficus Lyrata',
         adresse: '123 Rue des Plantes',
